@@ -1,0 +1,50 @@
+<%- include('./partials/header') %>
+
+
+<!-- Hero Section -->
+<section class="w-full h-screen flex items-center justify-between px-20 bg-gradient-to-r from-white to-blue-50">
+    <div class="w-1/2">
+        <h1 class="text-5xl font-bold leading-tight mb-6">
+            Fast, Secure, and Easy <br /> Peer-to-Peer Payments
+        </h1>
+        <p class="text-lg text-gray-600 mb-8">
+            WireX is your go-to app for seamless money transfers. Instantly send or receive money with just a few taps. Built for simplicity, designed for security.
+        </p>
+        <a href="/users/register" class="px-8 py-4 bg-blue-500 text-white rounded-full text-lg hover:bg-blue-600 transition">
+            Get Started
+        </a>
+    </div>
+    <div class="w-1/2">
+        <img src="/images/transfer-illustration.png" alt="Transfer Illustration" class="w-full h-auto" />
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="px-20 py-16 bg-white">
+    <h2 class="text-3xl font-semibold text-center mb-10">Why Choose WireX?</h2>
+    <div class="grid grid-cols-3 gap-10">
+        <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">Instant Transfers</h3>
+            <p class="text-gray-600">Send and receive money in real-time without any delays.</p>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">Secure Platform</h3>
+            <p class="text-gray-600">End-to-end encryption to protect your transactions and data.</p>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-md transition">
+            <h3 class="text-xl font-semibold mb-2">User-Friendly</h3>
+            <p class="text-gray-600">Clean, intuitive interface designed for all users, tech-savvy or not.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="px-20 py-16 bg-blue-100 text-center">
+    <h2 class="text-3xl font-semibold mb-4">Ready to experience seamless transactions?</h2>
+    <p class="text-lg mb-6">Join thousands of users already making effortless payments with WireX.</p>
+    <a href="/register" class="px-10 py-4 bg-blue-500 text-white rounded-full text-lg hover:bg-blue-600 transition">
+        Create Your Account
+    </a>
+</section>
+
+<%- include('./partials/footer') %>

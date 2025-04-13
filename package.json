@@ -1,0 +1,31 @@
+{
+  "name": "the-premium-bag",
+  "version": "1.0.0",
+  "description": "The Premium Bag is a well-organized project built with care to follow industry standard practices for folder structure and security. It keeps the code clean and easy to manage while protecting user data. This shop provides a smooth and safe experience for customers looking to buy high-quality products",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "config": "^3.3.12",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "debug": "^4.4.0",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.1",
+    "node-pg-migrate": "^7.9.1",
+    "nodemon": "^3.1.9",
+    "passport": "^0.7.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.14.1"
+  }
+}
