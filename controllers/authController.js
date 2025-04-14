@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/generateToken');
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const {pool} = require('../config/postgresql-connection'); 
 
 
@@ -8,6 +10,7 @@ const {pool} = require('../config/postgresql-connection');
 module.exports.getRegisterPage = async function(req, res) {
     res.render("register"); 
 };
+
 
 // Register user
 module.exports.registerUser = async function (req, res) {
@@ -88,12 +91,72 @@ module.exports.loginUser = async function (req, res) {
     }
 };
 
+// show dashboard
 module.exports.getDashboard = async function(req, res) {
     res.render("dashboard"); 
 };
 
-// //logout
-// module.exports.logout = function(req,res){
-//     res.cookie("token", "");
-//     res.redirect("/");
-// }
+
+// Redirects the user to Google's OAuth 2.0 server for authentication
+module.exports.getGoogleAuth = (req, res, next) => {
+    passport.authenticate("google", {
+      scope: ["profile", "email"],
+    })(req, res, next); 
+  };
+
+//Google OAuth callback
+module.exports.handleGoogleCallback = (req, res, next) => {
+    passport.authenticate("google", {
+      successRedirect: "/users/dashboard",
+      failureRedirect: "/users/login",
+    })(req, res, next); 
+  };
+
+//Passport Google Strategy
+module.exports.configureGoogleStrategy = async function (req, res) {
+    passport.use("google", new GoogleStrategy({
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
+      userProfileURL: process.env.GOOGLE_USER_PROFILE_URL,
+    },
+    async (accessToken, refreshToken, profile, cb) => {
+      try {
+        const userQuery = 'SELECT * FROM users WHERE email = $1';
+        const userResult = await pool.query(userQuery, [profile.email]);
+  
+        if (userResult.rows.length === 0) {
+          const newUser = await pool.query(
+            "INSERT INTO users (name, email, oauth_provider, oauth_id) VALUES ($1, $2, $3, $4)",
+            [profile.name, profile.email, "google", profile.id]
+          );
+          cb(null, newUser.rows[0]);
+        } else {
+          cb(null, userResult.rows[0]);
+        }
+      } catch (err) {
+        cb(err);
+      }
+    }));
+  };
+  
+  passport.serializeUser((user, done) => {
+    done(null, user);
+  });
+  
+  passport.deserializeUser((user, done) => {
+    done(null, user);
+  });
+  
+
+  module.exports.logout = function (req, res, next) {
+    req.logout(function(err) {
+      if (err) { return next(err); }
+
+      req.session.destroy(() => {
+        res.clearCookie("connect.sid"); 
+        res.redirect("/users/login");
+      });
+    });
+  };
+  
