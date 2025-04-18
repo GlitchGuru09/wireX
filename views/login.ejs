@@ -1,19 +1,23 @@
 <%- include('./partials/header') %>
 
-<div class="container-fluid vh-100 bg-light d-flex align-items-center justify-content-center">
+<div class="container-fluid vh-100 gradient-bg d-flex align-items-center justify-content-center">
   <div class="row w-100 h-100">
     
-    <!-- Left Side (Image) -->
-    <div class="d-none d-md-block col-md-6 p-0">
-      <div
-        class="h-100"
-        style="background-image: url('https://i.pinimg.com/736x/f8/01/de/f801de4fd2a00e33bccf6f308ffbcde4.jpg'); background-size: cover; background-position: center;">
-      </div>
+    <!-- Left Side (Lottie Animation) -->
+    <div class="d-none d-md-flex col-md-6 p-0 align-items-center justify-content-center">
+      <dotlottie-player
+        src="https://lottie.host/8bf8bb0a-7048-47f1-a2c6-02ddd3dc09b4/o3PM5bHsbT.lottie"
+        background="transparent"
+        speed="1"
+        style="width: 50%; height: auto"
+        loop
+        autoplay>
+      </dotlottie-player>
     </div>
 
     <!-- Right Side (Login Form) -->
-    <div class="col-md-6 d-flex align-items-center justify-content-center bg-white">
-      <div class="w-100 px-4" style="max-width: 400px;">
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="w-100 glass-card" style="max-width: 400px;">
         <h2 class="text-center mb-4">Login to WireX</h2>
 
         <form action="/users/login" method="POST">
@@ -54,14 +58,10 @@
           <p class="text-muted mb-2">Or continue with</p>
           <a href="/auth/google" class="btn btn-danger w-100 d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M23.64 12.27c0-.79-.07-1.54-.2-2.27H12v4.33h6.59c-.3 1.43-1.18 2.63-2.52 3.42v2.85h4.07c2.38-2.2 3.74-5.44 3.74-8.33z" />
-              <path
-                d="M12 24c3.24 0 5.95-1.08 7.94-2.92l-3.74-2.85c-1.07.72-2.44 1.16-4.19 1.16-3.22 0-5.94-2.15-6.92-5.04H.92v3.12C2.91 21.03 7.09 24 12 24z" />
-              <path
-                d="M5.08 14.33c-.25-.72-.38-1.48-.38-2.27s.13-1.55.38-2.27V6.67H.92C.33 7.96 0 9.44 0 11c0 1.56.33 3.04.92 4.33l4.16-1.02z" />
-              <path
-                d="M12 4.79c1.77 0 3.35.61 4.6 1.79l3.42-3.42C17.95 1.08 15.24 0 12 0 7.09 0 2.91 2.97.92 7.67l4.16 3.12c.98-2.89 3.7-5 6.92-5z" />
+              <path d="M23.64 12.27c0-.79-.07-1.54-.2-2.27H12v4.33h6.59c-.3 1.43-1.18 2.63-2.52 3.42v2.85h4.07c2.38-2.2 3.74-5.44 3.74-8.33z"/>
+              <path d="M12 24c3.24 0 5.95-1.08 7.94-2.92l-3.74-2.85c-1.07.72-2.44 1.16-4.19 1.16-3.22 0-5.94-2.15-6.92-5.04H.92v3.12C2.91 21.03 7.09 24 12 24z"/>
+              <path d="M5.08 14.33c-.25-.72-.38-1.48-.38-2.27s.13-1.55.38-2.27V6.67H.92C.33 7.96 0 9.44 0 11c0 1.56.33 3.04.92 4.33l4.16-1.02z"/>
+              <path d="M12 4.79c1.77 0 3.35.61 4.6 1.79l3.42-3.42C17.95 1.08 15.24 0 12 0 7.09 0 2.91 2.97.92 7.67l4.16 3.12c.98-2.89 3.7-5 6.92-5z"/>
             </svg>
             Login with Google
           </a>

@@ -1,0 +1,20 @@
+.gradient-bg {
+    background: linear-gradient(270deg, #e0f7fa, #b2ebf2, #80deea, #4dd0e1, #ffffff);
+    background-size: 1000% 1000%;
+    animation: gradientMove 15s ease infinite;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2rem;
+  }
+  

@@ -79,7 +79,6 @@ module.exports.loginUser = async function (req, res) {
             }
 
             let token = generateToken(user);
-            console.log(token);
             res.cookie("token", token, {
                 httpOnly: true,
                 expires: new Date(Date.now() + 60 * 60 * 1000) // expires in 1 hour
@@ -106,11 +105,25 @@ module.exports.getGoogleAuth = (req, res, next) => {
 
 //Google OAuth callback
 module.exports.handleGoogleCallback = (req, res, next) => {
-    passport.authenticate("google", {
-      successRedirect: "/users/dashboard",
-      failureRedirect: "/users/login",
-    })(req, res, next); 
-  };
+  passport.authenticate("google", async (err, user, info) => {
+    if (err || !user) {
+      return res.redirect("/users/login");
+    }
+
+    try {
+      let token = generateToken(user);
+
+      res.cookie("token", token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 60 * 60 * 1000), // 1 hour
+      });
+
+      res.redirect("/users/dashboard");
+    } catch (error) {
+      next(error);
+    }
+  })(req, res, next);
+};
 
 //Passport Google Strategy
 module.exports.configureGoogleStrategy = async function (req, res) {
@@ -152,11 +165,13 @@ module.exports.configureGoogleStrategy = async function (req, res) {
   module.exports.logout = function (req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
-
+  
       req.session.destroy(() => {
-        res.clearCookie("connect.sid"); 
+        res.clearCookie("connect.sid"); // clears the session cookie
+        res.clearCookie("token");       // clears the JWT token cookie
         res.redirect("/");
       });
     });
   };
+  
   

@@ -1,19 +1,23 @@
 <%- include('./partials/header') %>
 
-<div class="container-fluid vh-100 bg-light d-flex align-items-center justify-content-center">
+<div class="container-fluid vh-100 gradient-bg d-flex align-items-center justify-content-center">
   <div class="row w-100 h-100">
     
     <!-- Left Side (Image) -->
-    <div class="d-none d-md-block col-md-6 p-0">
-      <div
-        class="h-100"
-        style="background-image: url('https://i.pinimg.com/736x/f8/01/de/f801de4fd2a00e33bccf6f308ffbcde4.jpg'); background-size: cover; background-position: center;">
-      </div>
+    <div class="d-none d-md-flex col-md-6 p-0 align-items-center justify-content-center">
+      <dotlottie-player
+        src="https://lottie.host/ca464225-7648-4a04-811b-93b88ae7b648/6kpln8rlvt.lottie" 
+        background="transparent"
+        speed="1"
+        style="width: 50%; height: auto"
+        loop
+        autoplay>
+      </dotlottie-player>
     </div>
 
     <!-- Right Side (Register Form) -->
-    <div class="col-md-6 d-flex align-items-center justify-content-center bg-white">
-      <div class="w-100 px-4" style="max-width: 400px;">
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="w-100 glass-card" style="max-width: 400px;">
         <h2 class="text-center mb-4">Create a WireX Account</h2>
 
         <form action="/users/register" method="POST">
