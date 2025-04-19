@@ -1,0 +1,66 @@
+<%- include('./partials/header') %>
+<%- include('./partials/navbar-main.ejs') %>
+
+<div class="container py-5 mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="mb-4 text-primary fw-bold">Transfer Money</h4>
+          
+          <form action="/transfer" method="POST" enctype="multipart/form-data">
+
+            <!-- From Account -->
+            <div class="mb-3">
+              <label for="fromAccount" class="form-label">From Account</label>
+              <select class="form-select" id="fromAccount" name="fromAccount" required>
+                <option selected disabled>Choose your account</option>
+                <option value="checking">Checking - 1234</option>
+                <option value="savings">Savings - 5678</option>
+              </select>
+            </div>
+
+            <!-- Recipient Name -->
+            <div class="mb-3">
+              <label for="recipientName" class="form-label">Recipient Name</label>
+              <input type="text" class="form-control" id="recipientName" name="recipientName" placeholder="Full Name" required>
+            </div>
+
+            <!-- Recipient Account Number -->
+            <div class="mb-3">
+              <label for="recipientAccount" class="form-label">Recipient Account Number</label>
+              <input type="text" class="form-control" id="recipientAccount" name="recipientAccount" placeholder="e.g., 9876543210" required>
+            </div>
+
+            <!-- Amount -->
+            <div class="mb-3">
+              <label for="amount" class="form-label">Amount</label>
+              <input type="number" class="form-control" id="amount" name="amount" placeholder="$0.00" step="0.01" min="0.01" required>
+            </div>
+
+            <!-- Optional Message -->
+            <div class="mb-3">
+              <label for="message" class="form-label">Message (Optional)</label>
+              <textarea class="form-control" id="message" name="message" rows="3" placeholder="Add a note or message..."></textarea>
+            </div>
+
+            <!-- Upload Document -->
+            <div class="mb-4">
+              <label for="attachment" class="form-label">Attach File (Optional)</label>
+              <input class="form-control" type="file" id="attachment" name="attachment" accept=".pdf,.jpg,.png,.jpeg">
+              <div class="form-text">You can upload a receipt or invoice (Max: 5MB)</div>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Send Money</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

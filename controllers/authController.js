@@ -95,6 +95,10 @@ module.exports.getDashboard = async function(req, res) {
     res.render("dashboard"); 
 };
 
+module.exports.getTransfer = async function(req, res) {
+  res.render("transfer"); 
+};
+
 
 // Redirects the user to Google's OAuth 2.0 server for authentication
 module.exports.getGoogleAuth = (req, res, next) => {

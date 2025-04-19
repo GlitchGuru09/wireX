@@ -1,10 +1,85 @@
 <%- include('./partials/header') %>
 <%- include('./partials/navbar-main.ejs') %>
 
+<!-- Main Content -->
+<div class="container py-5 mt-5">
+  <div class="row mb-4">
+    <!-- Balance Card -->
+    <div class="col-md-6 mb-3">
+      <div class="card bg-primary text-white shadow-sm card-custom">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Available Balance</h5>
+          <p class="balance-amount fs-4 fw-semibold">$5,250.75</p>
+        </div>
+      </div>
+    </div>
 
-<div class="relative h-screen bg-gray-100">
-  <div class="flex items-center justify-center h-full">
-    <h1 class="text-4xl font-bold text-gray-800">Welcome to your Dashboard</h1>
+    <!-- Quick Transfer Card -->
+    <div class="col-md-6 mb-3">
+      <a href="/users/transfer" class="text-decoration-none">
+        <div class="card shadow-sm card-custom hover-shadow h-100">
+          <div class="card-body text-center d-flex flex-column justify-content-center">
+            <h5 class="section-title text-primary mb-2">Quick Transfer</h5>
+            <p class="text-muted">Tap here to send money instantly</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Transaction History -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow-sm card-custom">
+        <div class="card-body">
+          <h5 class="section-title text-primary mb-3">Transaction History</h5>
+          <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-hover table-bordered align-middle mb-0">
+              <thead class="table-light position-sticky top-0">
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Apr 18, 2025</td>
+                  <td>Transfer to John Doe</td>
+                  <td>Debit</td>
+                  <td class="text-danger">- $150.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Apr 17, 2025</td>
+                  <td>Salary Credit</td>
+                  <td>Credit</td>
+                  <td class="text-success">+ $3,000.00</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Apr 15, 2025</td>
+                  <td>Electricity Bill</td>
+                  <td>Debit</td>
+                  <td class="text-danger">- $75.50</td>
+                  <td><span class="badge bg-warning text-dark">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Apr 13, 2025</td>
+                  <td>Amazon Purchase</td>
+                  <td>Debit</td>
+                  <td class="text-danger">- $200.00</td>
+                  <td><span class="badge bg-danger">Failed</span></td>
+                </tr>
+                <!-- Add more rows if needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
